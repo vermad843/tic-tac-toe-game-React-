@@ -5,20 +5,20 @@ class Board extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-     squares: Array(9).fill(null),
-     xIsNext : true,
+     squares: Array(9).fill(null),  //null for all squares(null) other two are 'X' and 'O';
+     xIsNext : true,            //default true = 'X';
     };
   }
 
  handleClick(i) {
-   const squares = this.state.squares.slice();
+   const squares = this.state.squares.slice(); //copying the array 
    if(calculateWinner(squares) || squares[i]){
      return;
    }
    squares[i] = this.state.xIsNext ? 'X' : 'O';
    this.setState({
      squares : squares,
-     xIsNext : !this.state.xIsNext,
+     xIsNext : !this.state.xIsNext,                  //false = 'O'
    });
  }
 
@@ -42,7 +42,7 @@ class Board extends React.Component {
       }
       
       return (
-        <div>
+        <div className = "title">
           <div className="status">{status}</div>
           <div className="board-row">
             {this.renderSquare(0)}
